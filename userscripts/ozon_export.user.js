@@ -6,10 +6,10 @@
 // @match        https://seller.ozon.ru/app/messenger/*
 // @grant        none
 // ==/UserScript==
-(function() {
-  'use strict';
+(function () {
+  "use strict";
 
-  const delay = ms => new Promise(res => setTimeout(res, ms));
+  const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
   // Ждём, пока DOM загрузит список тикетов
   async function waitForTickets() {
@@ -26,10 +26,14 @@
     return Array.from(document.querySelectorAll('[class*="ticketItem"]'));
   }
   function getTicketDate(el) {
-    return el.querySelector('[class*="ticketItemDate"]')?.textContent.trim() || '';
+    return (
+      el.querySelector('[class*="ticketItemDate"]')?.textContent.trim() || ""
+    );
   }
   function getTicketTitle(el) {
-    return el.querySelector('[class*="ticketItemTitle"]')?.textContent.trim() || '';
+    return (
+      el.querySelector('[class*="ticketItemTitle"]')?.textContent.trim() || ""
+    );
   }
   function extractNumber(title) {
     const m = title.match(/№\s*([\d]+)/);
@@ -37,22 +41,24 @@
   }
   function getUserMessages() {
     return Array.from(document.querySelectorAll('[class*="outgoingMessage"]'))
-                .map(el => el.textContent.trim().replace(/\n+/g, ' '))
-                .join(' | ');
+      .map((el) => el.textContent.trim().replace(/\n+/g, " "))
+      .join(" | ");
   }
 
   // Генерация CSV и скачивание
   function downloadCSV(rows) {
-    const header = ['Дата','Номер обращения','Моё сообщение'];
+    const header = ["Дата", "Номер обращения", "Моё сообщение"];
     const csv = [
-      header.join(','),
-      ...rows.map(r => [r.date, `"${r.number}"`, `"${r.text.replace(/"/g,'""')}"`].join(','))
-    ].join('\r\n');
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      header.join(","),
+      ...rows.map((r) =>
+        [r.date, `"${r.number}"`, `"${r.text.replace(/"/g, '""')}"`].join(","),
+      ),
+    ].join("\r\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = 'ozon_tickets_export.csv';
+    a.download = "ozon_tickets_export.csv";
     document.body.append(a);
     a.click();
     a.remove();
@@ -64,11 +70,11 @@
     const tickets = getTicketItems();
     const rows = [];
 
-    for (let i=0; i<tickets.length; i++) {
+    for (let i = 0; i < tickets.length; i++) {
       const ticket = tickets[i];
-      ticket.scrollIntoView({ block: 'center' });
+      ticket.scrollIntoView({ block: "center" });
       ticket.click();
-      await delay(1200);  // ждём, пока загрузится диалог
+      await delay(1200); // ждём, пока загрузится диалог
 
       const date = getTicketDate(ticket);
       const title = getTicketTitle(ticket);
@@ -76,7 +82,7 @@
       const text = getUserMessages();
 
       rows.push({ date, number, text });
-      console.log(`✔ [${i+1}/${tickets.length}]`, date, number);
+      console.log(`✔ [${i + 1}/${tickets.length}]`, date, number);
       await delay(300);
     }
 
@@ -89,20 +95,21 @@
     const header = document.querySelector('[class*="messengerHeader"]');
     if (!header) return console.warn("Header not found");
 
-    const btn = document.createElement('button');
-    btn.textContent = '📥 Export CSV';
-    btn.style = 'margin-left:10px;padding:4px 8px;background:#005bff;color:#fff;border:none;border-radius:4px;cursor:pointer;';
+    const btn = document.createElement("button");
+    btn.textContent = "📥 Export CSV";
+    btn.style =
+      "margin-left:10px;padding:4px 8px;background:#005bff;color:#fff;border:none;border-radius:4px;cursor:pointer;";
     btn.onclick = () => {
       btn.disabled = true;
-      btn.textContent = '⏳ Exporting...';
+      btn.textContent = "⏳ Exporting...";
       exportTickets().finally(() => {
         btn.disabled = false;
-        btn.textContent = '📥 Export CSV';
+        btn.textContent = "📥 Export CSV";
       });
     };
     header.append(btn);
   }
 
   // Запуск
-  window.addEventListener('load', initButton);
+  window.addEventListener("load", initButton);
 })();
