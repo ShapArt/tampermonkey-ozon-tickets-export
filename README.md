@@ -2,10 +2,9 @@
 
 ![Social Preview](https://raw.githubusercontent.com/ShapArt/tampermonkey-ozon-tickets-export/main/.github/social-preview.png)
 
-
-[![Stars](https://img.shields.io/github/stars/ShapArt/=for-the-badge)](https://github.com/ShapArt/tampermonkey-ozon-tickets-export/stargazers)
-[![Last Commit](https://img.shields.io/github/last-commit/ShapArt/=for-the-badge)](https://github.com/ShapArt/tampermonkey-ozon-tickets-export/commits/main)
-[![License](https://img.shields.io/github/license/ShapArt/=for-the-badge)](https://github.com/ShapArt/tampermonkey-ozon-tickets-export/blob/main/LICENSE)
+[![Stars](https://img.shields.io/github/stars/ShapArt/tampermonkey-ozon-tickets-export?style=for-the-badge)](https://github.com/ShapArt/tampermonkey-ozon-tickets-export/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/ShapArt/tampermonkey-ozon-tickets-export?style=for-the-badge)](https://github.com/ShapArt/tampermonkey-ozon-tickets-export/commits/main)
+[![License](https://img.shields.io/github/license/ShapArt/tampermonkey-ozon-tickets-export?style=for-the-badge)](https://github.com/ShapArt/tampermonkey-ozon-tickets-export/blob/main/LICENSE)
 
 ## EN
 Tampermonkey userscript for Ozon ticket export and SLA highlighting.
@@ -39,6 +38,9 @@ See .github/CONTRIBUTING.md and open a focused PR.
 
 ## License / Лицензия
 See LICENSE.
+
+
+
 
 
 
