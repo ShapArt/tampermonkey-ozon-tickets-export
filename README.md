@@ -1,46 +1,52 @@
-# NAOS Super Helper
+# tampermonkey-ozon-tickets-export
 
-Короткий питч
+![License](https://img.shields.io/github/license/ShapArt/tampermonkey-ozon-tickets-export)
+![Last Commit](https://img.shields.io/github/last-commit/ShapArt/tampermonkey-ozon-tickets-export)
+![Language](https://img.shields.io/github/languages/top/ShapArt/tampermonkey-ozon-tickets-export)
 
-- NAOS Super Helper — Tampermonkey-скрипт с панелью, которая понимает текстовое ТЗ и заполняет формы Журнала, Баннеров и Акций в Magento admin.
-- Экономит время контент-менеджеров: меньше копипаста, меньше пропусков полей, единый формат ТЗ и быстрый визуальный лог.
-- Поддерживает шаблон Журнала (docx), простой формат Баннеров (ключ: значение) и рабочие примеры Акций/Промо.
-- Панель не мешает: её можно перетащить за хедер, позиция сохраняется в localStorage, есть «Сброс позиции».
-- Гайд встроен в код, отдельные доки не нужны; есть самопроверка страницы.
-- Лог и тосты без секретов, можно включить DEBUG-флаг в коде для подробной консоли.
-- Автопилот и очередь для акций: можно разобрать несколько ТЗ и заполнять по очереди с приоритетом бренда.
-- Селекторы и заполнение защищены try/catch, при отсутствии поля выводится понятное предупреждение.
-- Парсеры терпимы к пустым строкам, тире и спискам; slug-и и даты считаются автоматически.
-- Состояние панели (положение, активная вкладка, очередь) хранится в localStorage и восстанавливается.
-- «Проверить страницу» сразу сообщает, что именно открыто (Журнал/Баннер/Акция) и есть ли форма.
+## EN Overview
+Ozon tickets export user-script with SLA highlighting
 
-Установка
+## RU Описание
+Ozon tickets export user-script with SLA highlighting
 
-1. Установите расширение Tampermonkey в браузер (Chrome/Firefox/Edge).
-2. Откройте файл `NAOS Super Helper.user.js` и подтвердите установку в Tampermonkey.
-3. Убедитесь, что скрипт включён в менеджере Tampermonkey.
+## EN Features
+- Clear project purpose and maintainable structure.
+- Standardized community and contribution files.
+- Consistent documentation style across account repositories.
 
-Где работает
+## RU Возможности
+- Понятная цель проекта и поддерживаемая структура.
+- Стандартизированные файлы сообщества и вклада.
+- Единый стиль документации во всех репозиториях аккаунта.
 
-- Админка Magento NAOS: `https://backend.naos.ru/*`.
-- Страницы: Журнал (`/mageplaza_blog/post/*`), Баннеры (`/oggetto_banner/entity/*`), Акции/Promos (`/pharmacy/promotion/*`).
+## EN Quick Start
+Review repository files and docs for usage details.
 
-Быстрый старт (3 шага)
+## RU Быстрый старт
+Review repository files and docs for usage details.
 
-1. Откройте нужную страницу (Журнал/Баннер/Акция) — панель появится справа.
-2. Выберите вкладку, вставьте текст ТЗ, нажмите «Разобрать ТЗ» и проверьте превью/лог.
-3. Нажмите «Заполнить форму» — скрипт подставит данные, дальше сохраните изменения.
+## EN Project Structure
+- .github/ - templates, policy files, CI config.
+- Source files and assets are stored in repository root or feature directories.
 
-Встроенный гайд
+## RU Структура проекта
+- .github/ - шаблоны, policy-файлы, конфиг CI.
+- Исходники и ресурсы находятся в корне или профильных директориях.
 
-- Кнопка «Гайд» в панели открывает инструкцию и примеры ТЗ (Журнал, Баннер, две Акции).
-- Панель можно перетаскивать за хедер; «Сброс позиции» вернёт её в правый верх.
-- «Проверить страницу» выводит статус (Журнал/Баннер/Акция) и найденную форму.
+## EN Roadmap
+- Improve test coverage and automation.
+- Keep docs aligned with actual project behavior.
 
-Troubleshooting
+## RU Планы
+- Расширять покрытие тестами и автоматизацией.
+- Поддерживать документацию в актуальном состоянии.
 
-- Поля не заполнились: нажмите «Проверить страницу», убедитесь, что нужная форма открыта и не скрыта в Magento UI.
-- TinyMCE не принял текст: нажмите «Разобрать ТЗ» ещё раз и повторите «Заполнить форму» после загрузки редактора.
-- Нужное поле отсутствует: заполните вручную; предупреждение отобразится в логе.
-- Панель мешает: перетащите её или нажмите «Сброс позиции».
-- Дебаг: установите `const DEBUG = true` в начале скрипта для подробных логов в консоли.
+## EN Contributing
+See .github/CONTRIBUTING.md.
+
+## RU Вклад
+См. .github/CONTRIBUTING.md.
+
+## License / Лицензия
+See LICENSE.
